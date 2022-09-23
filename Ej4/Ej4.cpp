@@ -1,3 +1,5 @@
+/*Desarrollar una función que dada una pila y dos valores x e y, reemplace cada valor igual a y que se encuentre en la pila por el valor x, retornando la pila modificada. */
+
 #include <iostream>
 
 using namespace std;
@@ -30,7 +32,6 @@ int main()
     cin >> x;
 
     Punto1(PilaDeNro,x,y);
-
 
     return 0;
 }
