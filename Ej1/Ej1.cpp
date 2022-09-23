@@ -1,3 +1,5 @@
+/*Dada una  pila sacar los dos elementos del tope y reemplazarlos por uno dado (agregar) */
+
 #include <iostream>
 
 using namespace std;
