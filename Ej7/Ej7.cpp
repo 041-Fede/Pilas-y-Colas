@@ -10,7 +10,7 @@ using namespace std;
 struct Pasajeros
 {
     int DNI;
-    string Nombre,Destino;
+    string Nombre;
 };
 
 struct NodoCola
@@ -21,7 +21,7 @@ struct NodoCola
 
 void CargaDeDatos(NodoCola*&PrimeroMar,NodoCola*&UltimoMar,NodoCola*&PrimeroPunta,NodoCola*&UltimoPunta,NodoCola*&PrimeroMonte,NodoCola*&UltimoMonte);
 void Encolar(NodoCola*&Primero,NodoCola*&Ultimo,Pasajeros Dato);
-void Punto2 (NodoCola*&PrimeroMar,NodoCola*&UltimoMar,NodoCola*&PrimeroPunta,NodoCola*&UltimoPunta,NodoCola*&PrimeroMonte,NodoCola*&UltimoMonte,string Destino,int Nro);
+void AsientoLibresPorDestino (NodoCola*&PrimeroMar,NodoCola*&UltimoMar,NodoCola*&PrimeroPunta,NodoCola*&UltimoPunta,NodoCola*&PrimeroMonte,NodoCola*&UltimoMonte,string Destino,int Nro);
 void Desencolar(NodoCola*&Primero,NodoCola*&Ultimo,Pasajeros &Dato);
 
 int main()
@@ -44,7 +44,7 @@ int main()
     cout << "---------------------------------" << endl;
     cout << "Listado de los pasajeros que viajaran: " << endl;
 
-    Punto2(PrimeroMar,UltimoMar,PrimeroPunta,UltimoPunta,PrimerMonte,UltimoMonte,Destino,Nro);
+    AsientoLibresPorDestino(PrimeroMar,UltimoMar,PrimeroPunta,UltimoPunta,PrimerMonte,UltimoMonte,Destino,Nro);
 
     cout << "---------------------------------" << endl;
 
@@ -53,6 +53,7 @@ int main()
 
 void CargaDeDatos(NodoCola*&PrimeroMar,NodoCola*&UltimoMar,NodoCola*&PrimeroPunta,NodoCola*&UltimoPunta,NodoCola*&PrimeroMonte,NodoCola*&UltimoMonte)
 {
+    string Destino;
     Pasajeros P;
 
     cout << "INFORME dni del pasajero: ";
@@ -64,21 +65,21 @@ void CargaDeDatos(NodoCola*&PrimeroMar,NodoCola*&UltimoMar,NodoCola*&PrimeroPunt
         cin >> P.Nombre;
 
         cout << "INFORME lugar de destino (MarDelPlata, PuntaDelEste, Montevideo): ";
-        cin >> P.Destino;
+        cin >> Destino;
 
-        if(P.Destino == "MarDelPlata")
+        if(Destino == "MarDelPlata")
         {
             Encolar(PrimeroMar,UltimoMar,P);
         }
         else
         {
-            if(P.Destino == "PuntaDelEste")
+            if(Destino == "PuntaDelEste")
             {
                 Encolar(PrimeroPunta,UltimoPunta,P);
             }
             else
             {
-                if(P.Destino == "Montevideo")
+                if(Destino == "Montevideo")
                 {
                     Encolar(PrimeroMonte,UltimoMonte,P);
                 }
@@ -113,7 +114,7 @@ void Encolar(NodoCola*&Primero,NodoCola*&Ultimo,Pasajeros Dato)
     Ultimo = Aux;
 }
 
-void Punto2(NodoCola*&PrimeroMar,NodoCola*&UltimoMar,NodoCola*&PrimeroPunta,NodoCola*&UltimoPunta,NodoCola*&PrimeroMonte,NodoCola*&UltimoMonte,string Destino,int Nro)
+void AsientoLibresPorDestino(NodoCola*&PrimeroMar,NodoCola*&UltimoMar,NodoCola*&PrimeroPunta,NodoCola*&UltimoPunta,NodoCola*&PrimeroMonte,NodoCola*&UltimoMonte,string Destino,int Nro)
 {
     int i = 0;
     Pasajeros P;
@@ -124,7 +125,7 @@ void Punto2(NodoCola*&PrimeroMar,NodoCola*&UltimoMar,NodoCola*&PrimeroPunta,Nodo
         {
             Desencolar(PrimeroMar,UltimoMar,P);
 
-            cout << "Nro de dni: " << P.DNI << " - " << "Nombre del pasajero: " << P.Nombre << " - " << "Destino del pasajero: " << P.Destino << endl;
+            cout << "Nro de dni: " << P.DNI << " - " << "Nombre del pasajero: " << P.Nombre << " - " << "Destino del pasajero: " << Destino << endl;
 
             i++;
         }
@@ -137,7 +138,7 @@ void Punto2(NodoCola*&PrimeroMar,NodoCola*&UltimoMar,NodoCola*&PrimeroPunta,Nodo
             {
                 Desencolar(PrimeroPunta,UltimoPunta,P);
 
-                cout << "Nro de dni: " << P.DNI << " - " << "Nombre del pasajero: " << P.Nombre << " - " << "Destino del pasajero: " << P.Destino << endl;
+                cout << "Nro de dni: " << P.DNI << " - " << "Nombre del pasajero: " << P.Nombre << " - " << "Destino del pasajero: " << Destino << endl;
 
                 i++;
             }
@@ -150,7 +151,7 @@ void Punto2(NodoCola*&PrimeroMar,NodoCola*&UltimoMar,NodoCola*&PrimeroPunta,Nodo
                 {
                     Desencolar(PrimeroMonte,UltimoMonte,P);
 
-                    cout << "Nro de dni: " << P.DNI << " - " << "Nombre del pasajero: " << P.Nombre << " - " << "Destino del pasajero: " << P.Destino << endl;
+                    cout << "Nro de dni: " << P.DNI << " - " << "Nombre del pasajero: " << P.Nombre << " - " << "Destino del pasajero: " << Destino << endl;
 
                     i++;
                 }
