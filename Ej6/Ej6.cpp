@@ -152,4 +152,50 @@ void Desencolar(NodoCola*&Primero,NodoCola*&Ultimo,Personas &Dato)
     }
 }
 
+//Manera de hacer el "Punto 1" sin necesidad de una Cola-Aux:
+/*bool Punto1(NodoCola*&Primero,NodoCola*&Ultimo,int Dni)
+{
+    int i = 0, j = 0;
+    bool Verificador = false;
+    NodoCola *Aux = Ultimo;
+    Personas P;
+    Personas PAux;
 
+    while(Primero != Aux && !Verificador)//Recorre la cola hasta llegar al ultimo
+    {
+        Desencolar(Primero,Ultimo,P);
+
+        if(P.Dni == Dni)
+        {
+            PAux = P;
+            Verificador = true;
+        }
+        else
+        {
+            Encolar(Primero,Ultimo,P);
+            i++;
+        }
+    }
+
+    while(j < i)//Acomoda la cola manteniendo su orden original
+    {
+        Desencolar(Primero,Ultimo,P);
+        Encolar(Primero,Ultimo,P);
+
+        j++;
+    }
+
+    if(Ultimo->Info.Dni == Dni)
+    {
+        Verificador = true;
+    }
+    else
+    {
+        if(Verificador)
+        {
+            Encolar(Primero,Ultimo,PAux);
+        }
+    }
+
+    return Verificador;
+}*/
